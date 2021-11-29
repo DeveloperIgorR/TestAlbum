@@ -10,7 +10,7 @@ const Album = () => {
 
     useEffect(() => {
         getImages()
-    })
+    },[])
 
     async function getImages(){
         try {
@@ -42,7 +42,7 @@ const Album = () => {
                 }
                 renderItem={item => (
                     <List.Item
-                        key={item.author}                        
+                        key={item.id}                        
                         extra={
                             console.log(item.url),
                             <img
@@ -56,7 +56,7 @@ const Album = () => {
                             title={<a href={item.href}>{item.title}</a>}
                             description={item.description}
                         />
-                        {item.content}
+                        {item.author}
                     </List.Item>
                 )}
             />
