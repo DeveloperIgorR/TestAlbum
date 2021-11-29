@@ -20,20 +20,7 @@ const Album = () => {
         catch (e) {
             console.log(e)
         }
-    }
-
-    const listData = [];
-    for (let i = 0; i < 23; i++) {
-        listData.push({
-            href: 'https://ant.design',
-            title: `ant design part ${i}`,
-            avatar: 'https://joeschmoe.io/api/v1/random',
-            description:
-                'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content:
-                'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-        });
-    }
+    }   
    
     return (
         <div>
@@ -45,9 +32,9 @@ const Album = () => {
                 pagination={{
                     showSizeChanger: true,
                     pageSizeOptions: [5, 10, 15],
-                    defaultPageSize: '4',
+                    defaultPageSize: '5',
                 }}
-                dataSource={listData}
+                dataSource={images}
                 footer={
                     <div>
                         <b>ant design</b> footer part
@@ -55,12 +42,12 @@ const Album = () => {
                 }
                 renderItem={item => (
                     <List.Item
-                        key={item.title}                        
+                        key={item.author}                        
                         extra={
+                            console.log(item.url),
                             <img
-                                width={272}
-                                alt="logo"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                width={272}                                
+                                src= {item.url}                                
                             />
                         }
                     >
