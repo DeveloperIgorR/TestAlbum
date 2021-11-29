@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { List, Avatar, Space, Row, Col } from 'antd';
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+import { instance } from '../services/instance';
 
 const Album = () => {
+    
+    const[images,setImages] = useState([])
+    console.log(images)
+
+    useEffect(() => {
+        getImages()
+    })
+
+    async function getImages(){
+        try {
+            const response = await instance.get()
+            setImages(response.data)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
 
     const listData = [];
     for (let i = 0; i < 23; i++) {
@@ -16,14 +34,7 @@ const Album = () => {
                 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
         });
     }
-
-    const IconText = ({ icon, text }) => (
-        <Space>
-            {React.createElement(icon)}
-            {text}
-        </Space>
-    );
-
+   
     return (
         <div>
             <Row>
@@ -44,12 +55,7 @@ const Album = () => {
                 }
                 renderItem={item => (
                     <List.Item
-                        key={item.title}
-                        actions={[
-                            <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-                            <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-                            <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-                        ]}
+                        key={item.title}                        
                         extra={
                             <img
                                 width={272}
