@@ -64,7 +64,7 @@ const Album = () => {
     const onImageClick = (author) => {
         setVisible(true)
         setAuthor(author)
-        setImages(images.filter(item => item.author != author))
+        setImages(images.filter(item => item.author !== author))
     }
 
     const handleCancel = () => {
@@ -94,9 +94,9 @@ const Album = () => {
                                 key={item.id}
                                 extra={
                                     <img onClick = {() => onImageClick(item.author)}
-                                        width={250}
+                                        width={150}
                                         alt="logo"
-                                        src={item.url}
+                                        src={item.download_url}
                                     />
                                 }
                             >
