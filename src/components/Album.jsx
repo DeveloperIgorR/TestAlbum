@@ -10,7 +10,7 @@ const Album = () => {
     const [visible, setVisible] = useState(false)
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [author,setAuthor] = useState('')
-    const [post, setPost] = useState(false)
+    const [post, setPost] = useState('')
     const avatar = 'https://joeschmoe.io/api/v1/random'
     console.log(images)
     console.log(post)
@@ -20,7 +20,7 @@ const Album = () => {
     }, [])
 
     async function getImages() {
-        try {
+        try {            
             const response = await instance.get()
             setImages(response.data)
         }
@@ -30,9 +30,9 @@ const Album = () => {
     }
 
     async function createPost() {
-        try {
-            const response = await secondInstance.post({
-                post
+        try {            
+            const response = await secondInstance.post(`/posts`,{
+               title:post
             })
             createNotificationSuccess()
         } catch (e) {
@@ -93,7 +93,7 @@ const Album = () => {
                                 key={item.id}
                                 extra={
                                     <img onClick = {() => onImageClick(item.author)}
-                                        width={400}
+                                        width={250}
                                         alt="logo"
                                         src={item.url}
                                     />
