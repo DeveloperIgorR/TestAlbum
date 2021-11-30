@@ -64,6 +64,7 @@ const Album = () => {
     const onImageClick = (author) => {
         setVisible(true)
         setAuthor(author)
+        setImages(images.filter(item => item.author != author))
     }
 
     const handleCancel = () => {
